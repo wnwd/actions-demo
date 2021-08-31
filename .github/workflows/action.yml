@@ -6,16 +6,18 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+      - name: 'Set up Python'
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
       - name: hello world
         id: step_one
         env:
           key: ${{ secrets.KEY }}
-          meaasge: "HELLO WORLD"
+          message: "HELLO WORLD"
         run: |
-          main.py
+          python main.py
           echo 'job complete!'
-      - name: work
-        id: step_two
-        run: |
-          echo "working..."
-          echo "I'm working."
+
